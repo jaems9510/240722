@@ -180,6 +180,7 @@ with col2:
 # ! 냉수대 속보 발령, 해제 표시(xline)
 # ! ㄴ df2 추가 => df4로 진행
 with col3:
+    st.subheader('2023년 6월 동해 해수면 온도 변화')
     fig3 = make_subplots(rows=1, cols=1)
 
     unique_observation_points = df4['OBVP_NM'].unique()

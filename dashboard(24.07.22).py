@@ -131,7 +131,7 @@ with col1:
             zoom=6.5
                     ),
         margin=dict(l=10, r=50, t=50, b=50),
-        autosize=False, width=800, height=1000
+        autosize=False, width=600, height=1000
     )
 
     # Plotly 차트를 Streamlit에 표시합니다.

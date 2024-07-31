@@ -174,6 +174,7 @@ with col2:
         margin=dict(l=10, r=50, t=50, b=50)
     )
 
+
     st.plotly_chart(fig2)
 #%%
 # ! fig3

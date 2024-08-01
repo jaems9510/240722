@@ -1,6 +1,6 @@
 #%%
 # ! 서버에서 보기 위한 터미널 명령어
-# !터미널 - streamlit run .\dashboard(24.07.22).py --server.port 8888
+# !터미널 - streamlit run .\dashboard(24.07.22).py --server.port 8080
 # (py310) C:\Users\YS\240722>
 #%%
 import streamlit as st #dash 패키지
@@ -130,7 +130,7 @@ with col1:
             center=dict(lat=df2['CP_OBVP_LAT'].mean(), lon=df2['CP_OBVP_LON'].mean()-1),  # 지도 중심 설정
             zoom=6.5
                     ),
-        margin=dict(l=10, r=50, t=50, b=50),
+        margin=dict(l=10, r=20, t=50, b=50),
         autosize=False, width=600, height=1000
     )
 
@@ -171,7 +171,7 @@ with col2:
             rangeslider=dict(visible=True),
             type='date'
         ),
-        margin=dict(l=10, r=50, t=50, b=50)
+        margin=dict(l=10, r=20, t=50, b=50)
     )
 
 
@@ -196,68 +196,12 @@ with col3:
                 name=observation_point
             ))
 
-    # issuance_types = ['신규발령', '해제']
-    # line_colors = {'신규발령': 'blue', '해제': 'red'}
-
-    # for issuance_type in issuance_types:
-    #     issuance_dates = df4[df4['CP_ISSUED_SITTN_NM'] == issuance_type]['CP_ISSUED_YMD'].unique()
-    #     for issuance_date in issuance_dates:
-    #         fig3.add_vline(
-    #             x=issuance_date,
-    #             line=dict(color=line_colors.get(issuance_type, 'black'), width=2),
-    #             annotation_text=issuance_type if issuance_type != '해제' else None,
-    #             annotation_position="top right" if issuance_type != '해제' else None
-    #         )
-
     fig3.update_layout(
         xaxis_title="날짜",
         yaxis_title="수온",
         margin=dict(l=50, r=50, t=50, b=50)
     )
     st.plotly_chart(fig3)
-
-    # st.plotly_chart(fig_3)
-    # with col3:
-    #     df4['OBVP_DATE'] = pd.to_datetime(df4['OBVP_DATE'], format='%Y-%m-%d')
-    #     df4['CP_ISSUED_YMD'] = pd.to_datetime(df4['CP_ISSUED_YMD'], format='%Y%m%d')
-    #     df4['CP_WTCH_YMD'] = pd.to_datetime(df4['CP_WTCH_YMD'], format='%Y%m%d')
-
-    #     # 서브플롯 생성
-    #     fig3 = make_subplots(rows=1, cols=1)
-
-    #     # 관측 지점의 고유값 가져오기
-    #     obvp2 = df4['OBVP_NM'].unique()
-
-    #     # 각 관측 지점에 대해 시간 시리즈 데이터 플로팅
-    #     for obvp_nm in obvp2:
-    #         obvp_df = df4[df4['OBVP_NM'] == obvp_nm]
-    #         if not obvp_df.empty:
-    #             fig3.add_trace(go.Scatter(x=obvp_df['OBVP_DATE'],
-    #                                     y=obvp_df['MEAN_TEMP'],
-    #                                     mode='lines+markers',
-    #                                     name=obvp_nm))
-
-    #     # 발령 유형 및 색상 정의
-    #     issuance_types = ['신규발령', '해제']
-    #     line_colors = {'신규발령': 'blue', '확대발령': 'orange', '대체발령': 'green', '해제': 'red'}
-
-    #     # 발령 날짜에 대한 수직선 추가
-    #     for issuance_type in issuance_types:
-    #         issuance_dates = df4[df4['CP_ISSUED_SITTN_NM'] == issuance_type]['CP_ISSUED_YMD'].unique()
-    #         for issuance_date in issuance_dates:
-    #             fig3.add_vline(x=issuance_date,
-    #                         line=dict(color=line_colors.get(issuance_type, 'black'), width=2),
-    #                         annotation_text=issuance_type,
-    #                         annotation_position="top right")
-
-    #     # 레이아웃 업데이트
-    #     fig3.update_layout(
-    #         xaxis_title="날짜",
-    #         yaxis_title="수온",
-    #         margin=dict(l=50, r=50, t=50, b=50)
-    #     )
-
-        # 플롯 표시
 
 #%%
 # ! fig4
@@ -321,17 +265,11 @@ with col3:
 
     # 박스 플롯 표시
     st.plotly_chart(fig5)
-
-
-
-
-
-
-
-
+#%%
+tab1, tab2 = st.tabs(['Tab A', 'Tab B'])
 # %%
-""" 
-#todo 1. 23년 6월 + 속보(xline_(fig3)
-#todo 4. colorscale 수정(blue-red, 10-25)(fig1)
-"""
+with tab1:
+    fig1
+with tab2:
+    fig2, fig3, fig4, fig5
 # %%

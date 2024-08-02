@@ -11,8 +11,8 @@ warnings.filterwarnings('ignore')
 
 # * 페이지 설정 및 데이터 프레임 정의
 st.set_page_config(page_title="2013-2023 동해 해표면 온도", page_icon=":bar_chart:", layout="wide")
-st.title(":bar_chart: 2013-2023 동해 해표면 온도", fontsize=20)
-st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
+st.title(":bar_chart: 2013-2023 동해 해표면 온도")
+st.markdown('<style>div.block-container{padding-top:0rem;}</style>', unsafe_allow_html=True)
 
 # 데이터 파일 읽기
 df1 = pd.read_csv("./2013-2023_동해관측정보.csv", encoding="utf-8-sig")
